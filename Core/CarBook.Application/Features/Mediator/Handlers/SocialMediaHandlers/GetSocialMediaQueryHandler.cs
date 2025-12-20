@@ -23,9 +23,9 @@ namespace UdemyCarBook.Application.Features.Mediator.Handlers.SocialMediaHandler
         {
             var values = await _repository.GetAllAsync();
             return values.Select(x => new GetSocialMediaQueryResult
-            {
-                Name = x.Name,
+            {                
                 SocialMediaID = x.SocialMediaID,
+                Name = x.Name,
                 Url = x.Url,
                 Icon = x.Icon
             }).ToList();
