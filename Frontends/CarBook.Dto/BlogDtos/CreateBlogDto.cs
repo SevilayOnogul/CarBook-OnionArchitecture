@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CarBook.Dto.BlogDtos
 {
-    public class ResultAllBlogsWithAuthorDto
+    public class CreateBlogDto
     {
-
-        public int blogID { get; set; }
         public string title { get; set; }
         public string authorName { get; set; }
         public object categoryName { get; set; }
@@ -21,7 +18,5 @@ namespace CarBook.Dto.BlogDtos
         public string Description { get; set; }
         public string AuthorDescription { get; set; }
         public string AuthorImageUrl { get; set; }
-
-
     }
 }
