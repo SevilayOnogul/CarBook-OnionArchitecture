@@ -9,20 +9,71 @@
 <html lang="en">
 
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
-
 <style>
     #drop option {
         color: black;
     }
 </style>
+@* <style>
+    .modal-footer .btn {
+        position: relative;
+        z-index: 999999 !important;
+        pointer-events: auto !important;
+    }
+</style> *@
+
+
 
 <body>
+ @*    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Rezervasyon Tamamlandı</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @TempData["SuccessMessage"]
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Hata Oluştu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @TempData["ErrorMessage"]
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tamam</button>
+
+@*                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-dismiss="modal">Tamam</button>
+ *@@*                     <button type="button" class="btn btn-primary" onclick="location.reload()">Tamam</button>
+@*                      <a href="/Default/Index" class="btn btn-primary">Tamam</a>     *@           
+@*  <div class="modal fade" id="successModal" tabindex="-1" style="z-index: 1050 !important;">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                onclick="$('#successModal').modal('hide'); $('.modal').hide(); $('.modal-backdrop').remove();">
+                            Tamam
+                        </button> *@
+    @*             </div>
+            </div>
+        </div>
+    </div> *@ 
     
 
     @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
 
     @await Component.InvokeAsync("_DefaultCoverUILayoutComponentPartial")
-
 
     <section class="ftco-section ftco-no-pt bg-light">
         <div class="container">
@@ -93,6 +144,7 @@
                 </div>
             </div>
     </section>
+
     @await Component.InvokeAsync("_DefaultLast5CarsWithBrandsComponentPartial")
 
     @await Component.InvokeAsync("_AboutUsComponentPartial")
@@ -111,5 +163,19 @@
 
     @await Component.InvokeAsync("_ScriptUILayoutComponentPartial")
 
-</body>
+    @if (TempData["mesaj"] != null)
+    {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                title: 'İşlem Başarılı',
+            @*.Raw() kullanarak karakterlerin bozulmasını engelliyoruz*@
+                text: '@Html.Raw(TempData["mesaj"])',
+                icon: 'success',
+                confirmButtonText: 'Tamam'
+            });
+        </script>
+    }
+   
+</body> 
 </html>

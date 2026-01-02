@@ -36,15 +36,9 @@ namespace CarBook.WebUI.Controllers
                                                 }).ToList();
                 ViewBag.v = values2;
             //}
-                return View();
+            //ViewBag.mesaj = mesaj;
+            return View();
         }
-
-        //[HttpPost]
-        //public IActionResult Index(string p)
-        //{
-        //    TempData["deger"] = p;
-        //    return RedirectToAction("Index","RentACarList");
-        //}
 
         [HttpPost]
         public IActionResult Index(string book_pick_date, string book_off_date, string time_pick, string time_off, string locationID)
@@ -54,6 +48,7 @@ namespace CarBook.WebUI.Controllers
             TempData["timepick"] = time_pick;
             TempData["timeoff"] = time_off;
             TempData["locationID"] = locationID;
+        
             return RedirectToAction("Index", "RentACarList");
         }
     }

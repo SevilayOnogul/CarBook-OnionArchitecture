@@ -16,3 +16,20 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="~/carbook-master/js/google-map.js"></script>
 <script src="~/carbook-master/js/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Burayı @Html. Raw ile güncelledik
+        var message = "@Html.Raw(TempData["mesaj"])";
+
+        if (message) {
+            Swal.fire({
+                title: 'İşlem Başarılı',
+                text: message,
+                icon: 'success',
+                confirmButtonText: 'Tamam'
+            });
+        }
+    });
+</script>

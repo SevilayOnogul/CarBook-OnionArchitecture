@@ -19,7 +19,6 @@ namespace CarBook.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLast5CarsWithBrandQueryHandler _getLast5CarsWithBrandQueryHandler;
-        private readonly IMediator _mediator;
 
         public CarsController(GetCarQueryHandler getCarQueryHandler, 
             GetCarByIdQueryHandler getCarByIdQueryHandler, 
