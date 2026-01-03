@@ -17,8 +17,12 @@
 <script src="~/carbook-master/js/google-map.js"></script>
 <script src="~/carbook-master/js/main.js"></script>
 
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
+ <script>
+
+    // 1. OTOMATİK MESAJ (TempData'dan gelen)
+
     document.addEventListener("DOMContentLoaded", function () {
         // Burayı @Html. Raw ile güncelledik
         var message = "@Html.Raw(TempData["mesaj"])";
@@ -32,4 +36,4 @@
             });
         }
     });
-</script>
+</script> 
