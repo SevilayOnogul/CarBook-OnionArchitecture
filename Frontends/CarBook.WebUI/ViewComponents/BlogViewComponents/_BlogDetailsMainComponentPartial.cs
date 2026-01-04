@@ -22,7 +22,7 @@ namespace CarBook.WebUI.ViewComponents.BlogViewComponents
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<GetBlogById>(jsonData);
                 return View(values);
-            }
+            }     
             return View();
         }
     }
