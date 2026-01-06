@@ -6,11 +6,11 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 | Ana Sayfa | Rezervasyon Arama | Rezervasyon Formu |
 | :---: | :---: | :---: |
-| ![Ana Sayfa](anasayfa.jpg) | ![Search](uygunAraclariKirala.jpg) | ![Form](rezervasyonFormu.png) |
+| ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
 
 | İşlem Başarılı | Dashboard & Analiz |
 | :---: | :---: |
-| ![Success](rezervasyonOnaylandi.jpg) | ![Dashboard](statics.png) |
+| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
 
 ---
 
