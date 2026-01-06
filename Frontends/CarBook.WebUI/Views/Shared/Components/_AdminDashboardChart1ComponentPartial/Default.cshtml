@@ -1,0 +1,59 @@
+﻿@model List<ResultReservationCountByLocationDto>
+
+<script src="~/chart.js"></script>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Lokasyon Rezervasyon Analizi</h4>
+
+            <div style="height: 290px;">
+                <canvas id="my1Chart" height="220px;"></canvas>
+                <script>
+                    var values = document.getElementById('my1Chart').getContext('2d');
+                    var myChart = new Chart(values, {
+                        type: 'line',
+                        data: {
+                            // Lokasyon isimleri X eksenine
+                            labels: @Html.Raw(Json.Serialize(Model.Select(x => x.LocationName))),
+                            datasets: [{
+                                label: 'Rezervasyon Sayısı',
+                                // Rezervasyon sayıları grafiğe
+                                data: @Html.Raw(Json.Serialize(Model.Select(x => x.ReservationCount))),
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderWidth: 2,
+                                tension: 0.4, // Çizgiyi daha kavisli ve modern yapar
+                                fill: true    // Çizginin altını doldurur
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { color: 'rgba(0,0,0,0.05)' }
+                                },
+                                x: {
+                                    grid: { display: false }
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>@Model.Count</h4>
+                    <p class="text-muted mb-0">Aktif Lokasyon</p>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.Sum(x => x.ReservationCount)</h4>
+                    <p class="text-muted mb-0">Toplam Rezervasyon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

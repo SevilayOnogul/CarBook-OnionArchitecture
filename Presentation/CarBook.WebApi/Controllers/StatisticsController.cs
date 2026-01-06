@@ -1,4 +1,5 @@
-﻿using CarBook.Application.Features.Mediator.Queries.StatisticsQueries;
+﻿using CarBook.Application.Features.Mediator.Queries.BrandQueries;
+using CarBook.Application.Features.Mediator.Queries.StatisticsQueries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -127,6 +128,23 @@ namespace CarBook.WebApi.Controllers
             var value = await _mediator.Send(new GetCarBrandAndModelByRentPriceDailyMinQuery());
             return Ok(value);
         }
-
+        [HttpGet("GetCarCountByBrand")]
+        public async Task<IActionResult> GetCarCountByBrand()
+        {
+            var values = await _mediator.Send(new GetCarCountByBrandQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetCarCountByLocation")]
+        public async Task<IActionResult> GetCarCountByLocation()
+        {
+            var values = await _mediator.Send(new GetCarCountByLocationQuery());
+            return Ok(values);
+        }
+        [HttpGet("GetReservationCountByLocation")]
+        public async Task<IActionResult> GetReservationCountByLocation()
+        {
+            var values = await _mediator.Send(new GetReservationCountByLocationQuery());
+            return Ok(values);
+        }
     }
 }

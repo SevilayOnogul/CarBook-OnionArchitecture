@@ -1,0 +1,62 @@
+﻿@model List<ResultCarCountByLocationDto>
+
+<script src="~/chart.js"></script>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Lokasyon Verileri</h4>
+
+            <div style="height: 290px;">
+                <canvas id="my3Chart"></canvas>
+                <script>
+                    var values = document.getElementById('my3Chart').getContext('2d');
+                    var myChart = new Chart(values, {
+                        type: 'bar',
+                        data: {
+                            labels: @Html.Raw(Json.Serialize(Model.Select(x => x.LocationName))),
+                            datasets: [{
+                                label: 'Araç Sayısı',
+                                data: @Html.Raw(Json.Serialize(Model.Select(x => x.CarCount))),
+                                // Beğendiğin modern renk paleti
+                                backgroundColor: [
+                                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40',
+                                    '#8bc34a', '#f44336', '#009688', '#607d8b', '#795548', '#ffeb3b'
+                                ],
+                                borderWidth: 0,
+                                borderRadius: 5 // Sütunların köşelerini hafif yuvarlatır, daha modern durur
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: false } // Üstteki "Araç Sayısı" kutucuğunu gizler (zaten başlık var)
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: { display: false } // Arka plandaki çizgileri temizler
+                                },
+                                x: {
+                                    grid: { display: false }
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4 class="mb-0">@Model.Count</h4>
+                    <p class="text-muted mb-0">Lokasyon</p>
+                </div>
+                <div class="col-6">
+                    <h4 class="mb-0">@Model.Sum(x => x.CarCount)</h4>
+                    <p class="text-muted mb-0">Müsait Araç</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿using CarBook.Application.Interfaces.StatisticsInterfaces;
+﻿using CarBook.Application.Features.Mediator.Results.StatisticsResults;
+using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -136,6 +137,23 @@ namespace UdCarBook.Persistence.Repositories.StatisticsRepositories
         {
             var value = _context.Locations.Count();
             return value;
+        }
+
+        public async Task<List<GetReservationCountByLocationQueryResult>> GetReservationCountByLocation()
+        {
+            var values = await _context.Reservations
+                .GroupBy(x => x.PickUpLocationID)
+                .Select(y => new GetReservationCountByLocationQueryResult
+                {
+                    // Lokasyon adını getirmek için küçük bir alt sorgu
+                    LocationName = _context.Locations
+                        .Where(z => z.LocationID == y.Key)
+                        .Select(p => p.Name)
+                        .FirstOrDefault(),
+                    ReservationCount = y.Count()
+                }).ToListAsync();
+
+            return values;
         }
     }
 }
