@@ -2,7 +2,17 @@
 
 Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliştirilmiş, ölçeklenebilir ve kurumsal mimariye uygun bir araç kiralama sistemidir.
 
-![CarBook Dashboard](statics.png)
+### 📸 Proje Ekran Görüntüleri
+
+| Ana Sayfa | Rezervasyon Arama | Rezervasyon Formu |
+| :---: | :---: | :---: |
+| ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
+
+| İşlem Başarılı | Dashboard & Analiz |
+| :---: | :---: |
+| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
+
+---
 
 ### 🏗️ Kullanılan Teknolojiler & Mimari
 * **Onion Architecture:** Proje; Core, Application, Persistence ve Infrastructure olmak üzere 4 ana katmandan oluşur.
@@ -23,20 +33,18 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 #### 2. Kullanıcı Deneyimi (UI/UX)
 * **SweetAlert2 Entegrasyonu:** Klasik uyarı kutuları yerine modern, şık ve interaktif modal pencereler sisteme dahil edildi.
-* **Interaktif Footer:** Alt menüdeki "Nasıl Çalışır", "Koşullar" gibi bilgilendirme alanları SweetAlert2 ile dinamik hale getirildi.
+* **Dinamik Rezervasyon:** Kullanıcı dostu arayüz üzerinden lokasyon ve tarih bazlı araç arama ve rezervasyon akışı sağlandı.
 * **CSS Optimizasyonu:** Avatar hizalamaları ve form kontrolleri için özel stil giydirmeleri yapıldı.
 
 #### 3. Admin Paneli & Araç Yönetimi
-* **Araç Özellik Yönetimi:** Araçlara ait donanımların (Klima, ABS, Otomatik Vites vb.) aktif/pasif edilebildiği dinamik listeleme yapısı kuruldu.
-* **Advanced Model Binding:** Çoklu veri girişini (`for` loop ve indeksleme kullanarak) destekleyen kompleks form yapıları geliştirildi.
+* **Araç Özellik Yönetimi:** Araçlara ait donanımların (Klima, ABS vb.) aktif/pasif edilebildiği dinamik listeleme yapısı kuruldu.
+* **Advanced Model Binding:** Çoklu veri girişini destekleyen kompleks form yapıları geliştirildi.
 * **CRUD İşlemleri:** Araç, marka, kategori ve blog yönetimi için tam fonksiyonel yönetim paneli.
   
 #### 4. Veri Görselleştirme & Dashboard
 * **Dynamic Chart.js Integration:** Dashboard paneli üzerinde verilerin anlık takibi için interaktif grafikler entegre edildi.
-* **Brand Distribution (Pie Chart):** Filodaki araçların markalara göre dağılımı görselleştirildi.
-* **Location Capacity (Bar Chart):** Lokasyon bazlı araç stok durumları dinamik sütun grafiklerine dönüştürüldü.
-* **Reservation Trends (Line Chart):** Lokasyonlara göre rezervasyon yoğunlukları trend analizi (curved line) ile sunuldu.
-* **Advanced Statistics:** Toplam araç ve lokasyon bazlı rezervasyon sayıları API üzerinden asenkron çekilerek dashboard'a yansıtıldı.
+* **İstatistiksel Analiz:** Marka dağılımı (Pie), Lokasyon kapasitesi (Bar) ve Rezervasyon trendleri (Line) görselleştirildi.
+* **Advanced Statistics:** Toplam araç, lokasyon ve müsait araç sayıları API üzerinden asenkron çekilerek dashboard'a yansıtıldı.
 
 ---
 
