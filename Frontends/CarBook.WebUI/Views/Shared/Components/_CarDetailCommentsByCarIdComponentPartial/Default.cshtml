@@ -1,0 +1,134 @@
+﻿@model List<ResultReviewByCarIdDto>
+
+@{
+    var totalReview = Model.Count();
+    var fiveStarCount = Model.Count(x => x.RaytingValue == 5);
+    var fourStarCount = Model.Count(x => x.RaytingValue == 4);
+    var threeStarCount = Model.Count(x => x.RaytingValue == 3);
+    var twoStarCount = Model.Count(x => x.RaytingValue == 2);
+    var oneStarCount = Model.Count(x => x.RaytingValue == 1);
+}
+
+<style>
+    .avatar-circle {
+        width: 80px;
+        height: 80px;
+        background-color: #f1f1f1;
+        text-align: center;
+        border-radius: 50%;
+        margin-right: 20px;
+        display: inline-block;
+    }
+
+    .initials {
+        position: relative;
+        top: 25px;
+        font-size: 25px;
+        line-height: 25px;
+        color: #1089ff;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .user-img-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        background-size: cover;
+        background-position: center center;
+    }
+</style>
+
+<div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+    <div class="row">
+        <div class="col-md-7">
+            <h3 class="head">@totalReview Değerlendirme</h3>
+            @foreach (var item in Model)
+            {
+                // Harf ayıklama mantığı (Resim yoksa kullanılacak)
+                string initials = "";
+                var nameParts = item.CustomerName.Trim().Split(' ');
+                if (nameParts.Length > 1)
+                {
+                    initials = nameParts[0][0].ToString() + nameParts[nameParts.Length - 1][0].ToString();
+                }
+                else if (item.CustomerName.Length >= 2)
+                {
+                    initials = item.CustomerName.Substring(0, 2);
+                }
+                else
+                {
+                    initials = item.CustomerName;
+                }
+
+                <div class="review d-flex mb-4">
+                    @if (!string.IsNullOrEmpty(item.CustomerImage))
+                    {
+                        @* Eğer veritabanında resim yolu varsa resmi göster *@
+                        <div class="user-img-circle" style="background-image: url(@item.CustomerImage)"></div>
+                    }
+                    else
+                    {
+                        @* Resim yoksa baş harfleri göster *@
+                        <div class="avatar-circle">
+                            <span class="initials">@initials</span>
+                        </div>
+                    }
+
+                    <div class="desc">
+                        <h4>
+                            <span class="text-left">@item.CustomerName</span>
+                            <span class="text-right">@item.ReviewDate.ToString("dd MMMM yyyy HH:mm")</span>
+                        </h4>
+                        <p class="star">
+                            <span>
+                                @for (int i = 0; i < item.RaytingValue; i++)
+                                {
+                                    <i class="ion-ios-star"></i>
+                                }
+                                @for (int i = 0; i < 5 - item.RaytingValue; i++)
+                                {
+                                    <i class="ion-ios-star-outline"></i>
+                                }
+                            </span>
+                        </p>
+                        <p>@item.Comment</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-5">
+            <div class="rating-wrap">
+                <h3 class="head">Değerlendirme Sonuçları</h3>
+                <div class="wrap">
+                    @* 5 Yıldız *@
+                    <p class="star">
+                        <span>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                <i class="ion-ios-star"></i>
+                            }
+                            (% @(totalReview == 0 ? 0 : Math.Round((fiveStarCount * 100.0) / totalReview, 1)))
+                        </span>
+                        <span>@fiveStarCount Puanlama</span>
+                    </p>
+                    @* 4 Yıldız *@
+                    <p class="star">
+                        <span>
+                            @for (int i = 0; i < 4; i++)
+                            {
+                                <i class="ion-ios-star"></i>
+                            }
+                            <i class="ion-ios-star-outline"></i>
+                            (% @(totalReview == 0 ? 0 : Math.Round((fourStarCount * 100.0) / totalReview, 1)))
+                        </span>
+                        <span>@fourStarCount Puanlama</span>
+                    </p>
+                    @* Diğer yıldızları da istersen bu şekilde ekleyebilirsin *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,11 @@ namespace CarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+        public async Task<Car> GetCarByIdWithBrand(int id)
+        {
+            return await _context.Cars.Include(x => x.Brand).FirstOrDefaultAsync(x => x.CarID == id);
+        }
+
         public int GetCarCount()
         {
             var value = _context.Cars.Count();

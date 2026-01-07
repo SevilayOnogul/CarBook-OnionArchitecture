@@ -1,0 +1,37 @@
+﻿@model List<ResultCarFeatureByCarIdDto>
+
+@{
+    var features = Model.ToList();
+    int total = features.Count;
+    int columnCount = 4;
+    int perColumn = total / columnCount;
+    int extra = total % columnCount;
+    int index = 0;
+}
+
+<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+    <div class="row">
+        @for (int col = 0; col < columnCount; col++)
+        {
+            int takeCount = perColumn + (col < extra ? 1 : 0);
+            var slice = features.Skip(index).Take(takeCount);
+            index += takeCount;
+
+            <div class="col-md-3">
+                <ul class="features">
+                    @foreach (var item in slice)
+                    {
+                        if (item.Available)
+                        {
+                            <li class="check"><span class="ion-ios-checkmark"></span>@item.FeatureName</li>
+                        }
+                        else
+                        {
+                            <li class="remove"><span class="ion-ios-close"></span>@item.FeatureName</li>
+                        }
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</div>

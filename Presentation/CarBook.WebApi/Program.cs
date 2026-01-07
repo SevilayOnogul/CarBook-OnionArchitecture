@@ -10,11 +10,13 @@ using CarBook.Application.Features.RepositoryPattern;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.BrandInterfaces.CarBook.Application.Interfaces.BrandInterfaces;
+using CarBook.Application.Interfaces.CarDescriptionInterfaces;
 using CarBook.Application.Interfaces.CarFeatureInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Application.Interfaces.CarPricingInterfaces;
 using CarBook.Application.Interfaces.LocationInterfaces;
 using CarBook.Application.Interfaces.RentACarInterfaces;
+using CarBook.Application.Interfaces.ReviewInterfaces;
 using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Application.Interfaces.TagCloudInterfaces;
 using CarBook.Application.Services;
@@ -23,12 +25,14 @@ using CarBook.Persistence.Context;
 using CarBook.Persistence.Repositories;
 using CarBook.Persistence.Repositories.BlogRepositories;
 using CarBook.Persistence.Repositories.BrandRepositories;
+using CarBook.Persistence.Repositories.CarDescriptionRepositories;
 using CarBook.Persistence.Repositories.CarFeatureRepositories;
 using CarBook.Persistence.Repositories.CarPricingRepositories;
 using CarBook.Persistence.Repositories.CarRepositories;
 using CarBook.Persistence.Repositories.CommetRepositories;
 using CarBook.Persistence.Repositories.LocationRepositories;
 using CarBook.Persistence.Repositories.RentACarRepositories;
+using CarBook.Persistence.Repositories.ReviewRepositories;
 using CarBook.Persistence.Repositories.TagCloudRepositories;
 using UdCarBook.Persistence.Repositories.StatisticsRepositories;
 using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers;
@@ -48,6 +52,8 @@ builder.Services.AddScoped(typeof(IRentACarRepository), typeof(RentACarRepositor
 builder.Services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
 builder.Services.AddScoped(typeof(IBrandRepository), typeof(BrandRepository));
 builder.Services.AddScoped(typeof(ILocationRepository), typeof(LocationRepository));
+builder.Services.AddScoped(typeof(ICarDescriptionRepository), typeof(CarDescriptionRepository));
+builder.Services.AddScoped(typeof(IReviewRepository), typeof(ReviewRepository));
 
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
