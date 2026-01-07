@@ -10,7 +10,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 | İşlem Başarılı | Dashboard & Analiz | Araç Detay Sayfası |
 | :---: | :---: | :---: |
-| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) | ![Detail](aracDetay.png) |
+| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png)|
 
 ---
 
