@@ -9,8 +9,8 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 | ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
 
 | İşlem Başarılı | Dashboard & Analiz |
-| :---: | :---: | :---: |
-| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png)|
+| :---: | :---: |
+| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
 
 ---
 
@@ -30,7 +30,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 * **Smart Tab System:** Bootstrap tab yapısı kullanılarak Özellikler, Açıklama ve Yorumlar bölümleri tek sayfada akıcı bir şekilde yönetildi.
 * **Dinamik Puanlama:** Araçlara verilen yıldızlı puanlar (1-5 arası) ve bu puanların yüzde oranları dinamik olarak hesaplanıp görselleştirildi.
 
-#### 2. Akıllı Yorum & Avatar Sistemi
+#### 2. Akıllı Yorum & Avatar Sistemi (Yeni)
 * **Hybrid Avatar Logic:** Profil fotoğrafı olan kullanıcıların resmi, olmayanların ise ad-soyad baş harflerinden oluşan (Örn: "AY") özel tasarım avatarları otomatik olarak oluşturuldu.
 * **Letter Extraction Algorithm:** C# tarafında geliştirilen mantık ile kullanıcı adının tek veya çift kelime olmasına göre (ilk 2 harf veya baş harfler) karakter ayıklama işlemi sağlandı.
 
