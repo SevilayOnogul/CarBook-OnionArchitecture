@@ -8,7 +8,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 | :---: | :---: | :---: |
 | ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
 
-| İşlem Başarılı | Dashboard & Analiz | Araç Detay Sayfası |
+| İşlem Başarılı | Dashboard & Analiz |
 | :---: | :---: | :---: |
 | ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png)|
 
