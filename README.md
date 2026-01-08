@@ -18,45 +18,51 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 * **Onion Architecture:** Proje; Core, Application, Persistence ve Infrastructure olmak üzere 4 ana katmandan oluşur.
 * **CQRS Design Pattern:** Veri yazma (Command) ve veri okuma (Query) sorumlulukları birbirinden ayrılmıştır.
 * **MediatR:** Katmanlar arası iletişimi merkezi bir yapı üzerinden sağlayarak bağımlılıkları (coupling) minimize eder.
+* **FluentValidation:** İş kurallarını merkezi ve yönetilebilir bir yapıda doğrulamak için entegre edildi.
 * **ASP.NET Core 8.0:** Modern Web API ve WebUI entegrasyonu.
 * **Entity Framework Core:** Veritabanı yönetim ve sorgulama işlemleri için ORM kullanımı.
-* **DTO (Data Transfer Object):** Veri taşıma süreçlerinde güvenlik ve performans optimizasyonu.
 
 ---
 
 ### 🛠️ Tamamlanan Özellikler (Milestones)
 
-#### 1. Blog & Yorum Sistemi
+#### 1. Gelişmiş Araç Detay Modülü
+* **Dinamik İçerik Yönetimi:** Araç açıklamaları ve donanım özellikleri (Features) Mediator deseniyle asenkron olarak listelendi.
+* **Smart Tab System:** Bootstrap tab yapısı kullanılarak Özellikler, Açıklama ve Yorumlar bölümleri tek sayfada akıcı bir şekilde yönetildi.
+* **Dinamik Puanlama:** Araçlara verilen yıldızlı puanlar (1-5 arası) ve bu puanların yüzde oranları dinamik olarak hesaplanıp görselleştirildi.
+
+#### 2. Akıllı Yorum & Avatar Sistemi
+* **Hybrid Avatar Logic:** Profil fotoğrafı olan kullanıcıların resmi, olmayanların ise ad-soyad baş harflerinden oluşan özel tasarım avatarları otomatik olarak oluşturuldu.
+* **Letter Extraction Algorithm:** C# tarafında kullanıcı adının yapısına göre (tek/çift kelime) dinamik karakter ayıklama mantığı geliştirildi.
+
+#### 3. Güvenli Veri Girişi & Doğrulama (Yeni)
+* **FluentValidation Entegrasyonu:** Araç yorumları (Review) ve veri giriş süreçleri için kapsamlı doğrulama kuralları tanımlandı.
+* **Server-Side Validation:** Hatalı veya eksik verilerin (Boş alanlar, geçersiz puan aralıkları vb.) veritabanına işlenmesi API seviyesinde engellendi.
+
+#### 4. Blog & Yorum Sistemi
 * **Dinamik Blog Yönetimi:** Blog içerikleri ve detay sayfaları API üzerinden dinamik olarak yönetiliyor.
-* **Letter Avatars:** Resim yüklemeyen kullanıcılar için isim baş harflerinden otomatik dairesel avatar oluşturan özel C# mantığı geliştirildi.
-* **Tarih Formatlama:** Yorum ve blog tarihleri kullanıcı dostu (dd-MMM-yyyy) formatına getirildi.
+* **Tarih Formatlama:** Yorum ve blog tarihleri kullanıcı dostu (dd MMMM yyyy HH:mm) formatına getirildi.
 
-#### 2. Kullanıcı Deneyimi (UI/UX)
-* **SweetAlert2 Entegrasyonu:** Klasik uyarı kutuları yerine modern, şık ve interaktif modal pencereler sisteme dahil edildi.
+#### 5. Kullanıcı Deneyimi (UI/UX)
+* **SweetAlert2 Entegrasyonu:** Modern, şık ve interaktif modal pencereler sisteme dahil edildi.
 * **Dinamik Rezervasyon:** Kullanıcı dostu arayüz üzerinden lokasyon ve tarih bazlı araç arama ve rezervasyon akışı sağlandı.
-* **CSS Optimizasyonu:** Avatar hizalamaları ve form kontrolleri için özel stil giydirmeleri yapıldı.
 
-#### 3. Admin Paneli & Araç Yönetimi
-* **Araç Özellik Yönetimi:** Araçlara ait donanımların (Klima, ABS vb.) aktif/pasif edilebildiği dinamik listeleme yapısı kuruldu.
-* **Advanced Model Binding:** Çoklu veri girişini destekleyen kompleks form yapıları geliştirildi.
-* **CRUD İşlemleri:** Araç, marka, kategori ve blog yönetimi için tam fonksiyonel yönetim paneli.
-  
-#### 4. Veri Görselleştirme & Dashboard
+#### 6. Veri Görselleştirme & Dashboard
 * **Dynamic Chart.js Integration:** Dashboard paneli üzerinde verilerin anlık takibi için interaktif grafikler entegre edildi.
-* **İstatistiksel Analiz:** Marka dağılımı (Pie), Lokasyon kapasitesi (Bar) ve Rezervasyon trendleri (Line) görselleştirildi.
-* **Advanced Statistics:** Toplam araç, lokasyon ve müsait araç sayıları API üzerinden asenkron çekilerek dashboard'a yansıtıldı.
+* **İstatistiksel Analiz:** Marka dağılımı, lokasyon kapasitesi ve rezervasyon trendleri görselleştirildi.
 
 ---
 
 ### ⚙️ Teknik Detaylar (İç Mimari)
+* **Assembly Scanning:** Validator sınıfları, Application katmanı üzerinden otomatik olarak taranıp DI konteynırına kaydedildi.
 * **Statistics Repository:** Verilerin analizi için `GroupBy` ve `Count` gibi LINQ sorgularını içeren özelleştirilmiş repository yapısı.
-* **Clean DTO Mapping:** API verileri, UI katmanında Chart.js'in beklediği formatlara DTO'lar aracılığıyla dönüştürüldü.
-* **MediatR Query Handling:** Grafik verileri, birbirinden bağımsız Query sınıfları ve Handler'lar aracılığıyla merkezi olarak yönetilir.
+* **Clean DTO Mapping:** API verileri, UI katmanında gerekli formatlara DTO'lar aracılığıyla dönüştürüldü.
+* **Asenkron Veri Akışı:** Tüm bileşenler (ViewComponents) API verilerini asenkron olarak tüketir.
 
 ---
 
 ### 🚀 Proje Kurulumu
 1. Bu depoyu klonlayın: `git clone https://github.com/kullaniciadi/carbook.git`
-2. `appsettings.json` dosyasındaki **Connection String** bilgisini kendi SQL Server adresinizle güncelleyin.
-3. Package Manager Console üzerinden `Update-Database` komutunu çalıştırarak tabloları oluşturun.
+2. `appsettings.json` dosyasındaki **Connection String** bilgisini güncelleyin.
+3. Package Manager Console üzerinden `Update-Database` komutunu çalıştırın.
 4. Önce **Web API** projesini, ardından **WebUI** projesini çalıştırın.
