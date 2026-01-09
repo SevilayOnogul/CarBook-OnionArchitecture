@@ -19,6 +19,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 * **CQRS Design Pattern:** Veri yazma (Command) ve veri okuma (Query) sorumlulukları birbirinden ayrılmıştır.
 * **MediatR:** Katmanlar arası iletişimi merkezi bir yapı üzerinden sağlayarak bağımlılıkları (coupling) minimize eder.
 * **FluentValidation:** İş kurallarını merkezi ve yönetilebilir bir yapıda doğrulamak için entegre edildi.
+* **JWT (JSON Web Token):** Sistem güvenliği ve kimlik doğrulama süreçleri için standartlara uygun token altyapısı kuruldu.
 * **ASP.NET Core 8.0:** Modern Web API ve WebUI entegrasyonu.
 * **Entity Framework Core:** Veritabanı yönetim ve sorgulama işlemleri için ORM kullanımı.
 
@@ -35,25 +36,30 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 * **Hybrid Avatar Logic:** Profil fotoğrafı olan kullanıcıların resmi, olmayanların ise ad-soyad baş harflerinden oluşan özel tasarım avatarları otomatik olarak oluşturuldu.
 * **Letter Extraction Algorithm:** C# tarafında kullanıcı adının yapısına göre (tek/çift kelime) dinamik karakter ayıklama mantığı geliştirildi.
 
-#### 3. Güvenli Veri Girişi & Doğrulama (Yeni)
+#### 3. Güvenli Veri Girişi & Doğrulama
 * **FluentValidation Entegrasyonu:** Araç yorumları (Review) ve veri giriş süreçleri için kapsamlı doğrulama kuralları tanımlandı.
 * **Server-Side Validation:** Hatalı veya eksik verilerin (Boş alanlar, geçersiz puan aralıkları vb.) veritabanına işlenmesi API seviyesinde engellendi.
 
-#### 4. Blog & Yorum Sistemi
+#### 4. Kimlik Doğrulama & Güvenlik (Yeni)
+* **JWT Authentication:** Sisteme giriş yapan kullanıcıların güvenli bir şekilde doğrulanması için Bearer Token altyapısı hazırlandı.
+* **Secure API Access:** API uç noktaları, geçerli bir token olmadan erişimi engelleyecek şekilde koruma altına alındı.
+
+#### 5. Blog & Yorum Sistemi
 * **Dinamik Blog Yönetimi:** Blog içerikleri ve detay sayfaları API üzerinden dinamik olarak yönetiliyor.
 * **Tarih Formatlama:** Yorum ve blog tarihleri kullanıcı dostu (dd MMMM yyyy HH:mm) formatına getirildi.
 
-#### 5. Kullanıcı Deneyimi (UI/UX)
+#### 6. Kullanıcı Deneyimi (UI/UX)
 * **SweetAlert2 Entegrasyonu:** Modern, şık ve interaktif modal pencereler sisteme dahil edildi.
 * **Dinamik Rezervasyon:** Kullanıcı dostu arayüz üzerinden lokasyon ve tarih bazlı araç arama ve rezervasyon akışı sağlandı.
 
-#### 6. Veri Görselleştirme & Dashboard
+#### 7. Veri Görselleştirme & Dashboard
 * **Dynamic Chart.js Integration:** Dashboard paneli üzerinde verilerin anlık takibi için interaktif grafikler entegre edildi.
 * **İstatistiksel Analiz:** Marka dağılımı, lokasyon kapasitesi ve rezervasyon trendleri görselleştirildi.
 
 ---
 
 ### ⚙️ Teknik Detaylar (İç Mimari)
+* **JWT Configuration:** Issuer, Audience ve Symmetric Security Key doğrulamalarıyla güçlendirilmiş güvenlik yapılandırması.
 * **Assembly Scanning:** Validator sınıfları, Application katmanı üzerinden otomatik olarak taranıp DI konteynırına kaydedildi.
 * **Statistics Repository:** Verilerin analizi için `GroupBy` ve `Count` gibi LINQ sorgularını içeren özelleştirilmiş repository yapısı.
 * **Clean DTO Mapping:** API verileri, UI katmanında gerekli formatlara DTO'lar aracılığıyla dönüştürüldü.
