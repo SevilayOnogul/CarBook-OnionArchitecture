@@ -38,11 +38,13 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 #### 3. Güvenli Veri Girişi & Doğrulama
 * **FluentValidation Entegrasyonu:** Araç yorumları (Review) ve veri giriş süreçleri için kapsamlı doğrulama kuralları tanımlandı.
-* **Server-Side Validation:** Hatalı veya eksik verilerin (Boş alanlar, geçersiz puan aralıkları vb.) veritabanına işlenmesi API seviyesinde engellendi.
+* **Server-Side Validation:** Hatalı veya eksik verilerin veritabanına işlenmesi API seviyesinde engellendi.
 
-#### 4. Kimlik Doğrulama & Güvenlik (Yeni)
-* **JWT Authentication:** Sisteme giriş yapan kullanıcıların güvenli bir şekilde doğrulanması için Bearer Token altyapısı hazırlandı.
-* **Secure API Access:** API uç noktaları, geçerli bir token olmadan erişimi engelleyecek şekilde koruma altına alındı.
+#### 4. Kimlik Doğrulama & Kullanıcı Yönetimi
+* **Register & Login UI:** Kullanıcı dostu kayıt ve giriş arayüzleri API entegrasyonu ile tamamlandı.
+* **Cookie-Based JWT Storage:** API'den gelen JWT bilgileri, tarayıcıda güvenli cookie yapısında saklanarak oturum yönetimi sağlandı.
+* **Role Based Management:** Enum tabanlı kullanıcı rol yönetimi (Admin, Member vb.) altyapısı kurgulandı.
+* **Access Control List (ACL):** `[Authorize]` ve `[Authorize(Roles = "Admin")]` etiketleri ile sayfa bazlı yetkilendirme sistemi devreye alındı.
 
 #### 5. Blog & Yorum Sistemi
 * **Dinamik Blog Yönetimi:** Blog içerikleri ve detay sayfaları API üzerinden dinamik olarak yönetiliyor.
@@ -60,9 +62,10 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 ### ⚙️ Teknik Detaylar (İç Mimari)
 * **JWT Configuration:** Issuer, Audience ve Symmetric Security Key doğrulamalarıyla güçlendirilmiş güvenlik yapılandırması.
+* **Custom Identity Infrastructure:** AppUser ve AppRole tabloları üzerinden özelleştirilmiş, genişletilebilir kimlik yönetimi yapısı.
+* **Automatic Redirection:** Giriş yapmamış kullanıcıların korumalı sayfalara erişimi engellenerek otomatik olarak Login sayfasına yönlendirme mekanizması kuruldu.
 * **Assembly Scanning:** Validator sınıfları, Application katmanı üzerinden otomatik olarak taranıp DI konteynırına kaydedildi.
 * **Statistics Repository:** Verilerin analizi için `GroupBy` ve `Count` gibi LINQ sorgularını içeren özelleştirilmiş repository yapısı.
-* **Clean DTO Mapping:** API verileri, UI katmanında gerekli formatlara DTO'lar aracılığıyla dönüştürüldü.
 * **Asenkron Veri Akışı:** Tüm bileşenler (ViewComponents) API verilerini asenkron olarak tüketir.
 
 ---
