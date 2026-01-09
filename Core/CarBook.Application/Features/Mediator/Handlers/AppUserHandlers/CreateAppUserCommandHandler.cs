@@ -1,4 +1,5 @@
-﻿using CarBook.Application.Features.Mediator.Commands.AppUserCommands;
+﻿using CarBook.Application.Enums;
+using CarBook.Application.Features.Mediator.Commands.AppUserCommands;
 using CarBook.Application.Interfaces;
 using CarBook.Domain.Entities;
 using MediatR;
@@ -21,9 +22,9 @@ namespace CarBook.Application.Features.Mediator.Handlers.AppUserHandlers
         {
             await _repository.CreateAsync(new AppUser
             {
-                //Password = request.Password,
-                //Username = request.Username,
-                //AppRoleId = (int)RolesType.Member,
+                Password = request.Password,
+                Username = request.Username,
+                AppRoleId = (int)RolesType.Member,
                 //Email = request.Email,
                 //Name = request.Name,
                 //Surname = request.Surname
