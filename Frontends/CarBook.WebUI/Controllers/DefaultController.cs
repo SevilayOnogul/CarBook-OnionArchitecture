@@ -1,5 +1,4 @@
-﻿using CarBook.Dto.BannerDtos;
-using CarBook.Dto.LocationDtos;
+﻿using CarBook.Dto.LocationDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -7,23 +6,22 @@ using System.Net.Http.Headers;
 
 namespace CarBook.WebUI.Controllers
 {
-   
     public class DefaultController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-
         public DefaultController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
+
         [HttpGet]
-        public async Task< IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
-            //var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
-            //if (token != null)
-            //{
+            var token = User.Claims.FirstOrDefault(x => x.Type == "carbooktoken")?.Value;
+            if (token != null)
+            {
                 var client = _httpClientFactory.CreateClient();
-                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var responseMessage = await client.GetAsync("https://localhost:7027/api/Locations");
 
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -35,8 +33,7 @@ namespace CarBook.WebUI.Controllers
                                                     Value = x.LocationID.ToString()
                                                 }).ToList();
                 ViewBag.v = values2;
-            //}
-            //ViewBag.mesaj = mesaj;
+            }
             return View();
         }
 
@@ -48,8 +45,8 @@ namespace CarBook.WebUI.Controllers
             TempData["timepick"] = time_pick;
             TempData["timeoff"] = time_off;
             TempData["locationID"] = locationID;
-        
             return RedirectToAction("Index", "RentACarList");
         }
+
     }
 }
