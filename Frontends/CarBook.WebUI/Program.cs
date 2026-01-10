@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,13 +9,25 @@ builder.Services.AddHttpClient();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie(JwtBearerDefaults.AuthenticationScheme, opt =>
 {
     opt.LoginPath = "/Login/Index/";
-    opt.LogoutPath = "/Login/LogOut/";   
+    opt.LogoutPath = "/Login/LogOut/";
     opt.AccessDeniedPath = "/Pages/AccessDenied/";
     opt.Cookie.SameSite = SameSiteMode.Strict;
-    opt.Cookie.HttpOnly=true;
+    opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "CarBookJwt";
 });
+
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme) // Burasý deðiþti
+//    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt => // Burasý deðiþti
+//    {
+//        opt.LoginPath = "/Login/Index/";
+//        opt.LogoutPath = "/Login/LogOut/";
+//        opt.AccessDeniedPath = "/Pages/AccessDenied/";
+//        opt.Cookie.SameSite = SameSiteMode.Strict;
+//        opt.Cookie.HttpOnly = true;
+//        opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+//        opt.Cookie.Name = "CarBookJwt";
+//    });
 
 var app = builder.Build();
 

@@ -7,6 +7,7 @@ using CarBook.Dto.LoginDtos;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using CarBook.WebUI.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CarBook.WebUI.Controllers
 {
@@ -60,7 +61,14 @@ namespace CarBook.WebUI.Controllers
                 }
             }
 
-                    return View();
-                }
-            }
+            return View();
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(JwtBearerDefaults.AuthenticationScheme);
+            Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
+            return RedirectToAction("Index", "Login");
+        }
+    }
+}

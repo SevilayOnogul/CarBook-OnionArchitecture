@@ -29,7 +29,8 @@ namespace CarBook.Application.Tools
 
             var signinCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
+            //var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
+            var expireDate = DateTime.UtcNow.AddMinutes(JwtTokenDefaults.Expire);
 
             JwtSecurityToken token = new JwtSecurityToken(issuer: JwtTokenDefaults.ValidIssuer, audience: JwtTokenDefaults.ValidAudience, claims: claims, notBefore: DateTime.UtcNow, expires: expireDate, signingCredentials: signinCredentials);
 
