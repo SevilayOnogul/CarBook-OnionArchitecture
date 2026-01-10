@@ -4,17 +4,21 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 ### 📸 Proje Ekran Görüntüleri
 
-| Ana Sayfa | Rezervasyon Arama | Rezervasyon Formu |
+| Ana Sayfa | Kullanıcı Araç Listesi | Rezervasyon Arama |
 | :---: | :---: | :---: |
-| ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
+| ![Ana Sayfa](anasayfa.png) | ![User Cars](arackiralama.png) | ![Search](uygunAraclariKirala.png) |
 
-| Dashboard (SignalR) | Araç Detay & Yorumlar | API (Swagger) |
+| Admin Araç Yönetimi | Seçilebilir Özellikler | Araç Detay & Yorumlar |
 | :---: | :---: | :---: |
-| ![Stats](signalR.png) | ![Details](yorum.png) | ![Swagger](swagger.png) |
+| ![Admin Cars](araclistesi.png) | ![Features](arabaözellikleri.png) | ![Details](yorum.png) |
 
-| İletişim & Harita | İşlem Başarılı | Dashboard & Analiz |
+| Dashboard (SignalR) | İstatistik Kartları | Grafik Analizleri |
 | :---: | :---: | :---: |
-| ![Maps](maps.png) | ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
+| ![SignalR](signalR.png) | ![Cards](istatistikKartlari.png) | ![Stats](statics.png) |
+
+| API (Swagger) | Veritabanı (SQL) | İletişim & Harita |
+| :---: | :---: | :---: |
+| ![Swagger](swagger.png) | ![SQL](sqldiyagram.png) | ![Maps](maps.png) |
 
 ---
 
