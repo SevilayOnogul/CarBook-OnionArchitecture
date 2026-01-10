@@ -6,7 +6,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 
 | Ana Sayfa | Kullanıcı Araç Listesi | Rezervasyon Arama |
 | :---: | :---: | :---: |
-| ![Ana Sayfa](anasayfa.png) | ![User Cars](arackiralama.jpg) | ![Search](uygunAraclariKirala.png) |
+| ![Ana Sayfa](anasayfa.png) | ![User Cars](arackiralama.png) | ![Search](uygunAraclariKirala.png) |
 
 | Admin Araç Yönetimi | Seçilebilir Özellikler | Araç Detay & Yorumlar |
 | :---: | :---: | :---: |
