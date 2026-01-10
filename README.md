@@ -8,9 +8,13 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 | :---: | :---: | :---: |
 | ![Ana Sayfa](anasayfa.png) | ![Search](uygunAraclariKirala.png) | ![Form](rezervasyonFormu.png) |
 
-| İşlem Başarılı | Dashboard & Analiz |
-| :---: | :---: |
-| ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
+| Dashboard (SignalR) | Araç Detay & Yorumlar | API (Swagger) |
+| :---: | :---: | :---: |
+| ![Stats](signalR.png) | ![Details](yorum.png) | ![Swagger](swagger.png) |
+
+| İletişim & Harita | İşlem Başarılı | Dashboard & Analiz |
+| :---: | :---: | :---: |
+| ![Maps](maps.png) | ![Success](rezervasyonOnaylandi.png) | ![Dashboard](statics.png) |
 
 ---
 
@@ -18,6 +22,7 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 * **Onion Architecture:** Proje; Core, Application, Persistence ve Infrastructure olmak üzere 4 ana katmandan oluşur.
 * **CQRS Design Pattern:** Veri yazma (Command) ve veri okuma (Query) sorumlulukları birbirinden ayrılmıştır.
 * **MediatR:** Katmanlar arası iletişimi merkezi bir yapı üzerinden sağlayarak bağımlılıkları (coupling) minimize eder.
+* **SignalR:** Gerçek zamanlı veri akışı ve anlık istatistik takibi için entegre edildi.
 * **FluentValidation:** İş kurallarını merkezi ve yönetilebilir bir yapıda doğrulamak için entegre edildi.
 * **JWT (JSON Web Token):** Sistem güvenliği ve kimlik doğrulama süreçleri için standartlara uygun token altyapısı kuruldu.
 * **ASP.NET Core 8.0:** Modern Web API ve WebUI entegrasyonu.
@@ -57,6 +62,14 @@ Bu proje, modern yazılım mimarileri ve tasarım desenleri kullanılarak geliş
 #### 7. Veri Görselleştirme & Dashboard
 * **Dynamic Chart.js Integration:** Dashboard paneli üzerinde verilerin anlık takibi için interaktif grafikler entegre edildi.
 * **İstatistiksel Analiz:** Marka dağılımı, lokasyon kapasitesi ve rezervasyon trendleri görselleştirildi.
+
+#### 8. Gerçek Zamanlı Veri Akışı (SignalR)
+* **Real-Time Dashboard:** Veritabanındaki değişimler SignalR Hub aracılığıyla Dashboard ekranına anlık olarak yansıtılır.
+* **Live Connection:** Bağlantı durumu takibi ve canlı sayaç mekanizması oluşturuldu.
+
+#### 9. Harita Entegrasyonu & Güvenli Çıkış
+* **Google Maps API:** İletişim sayfasında dinamik harita ve lokasyon gösterimi sağlandı.
+* **Secure Logout:** `SignOutAsync` ve `Response.Headers.Append` yöntemleri ile tarayıcı önbelleğini temizleyen tam güvenli çıkış sistemi kuruldu.
 
 ---
 
