@@ -1,9 +1,7 @@
 ﻿using CarBook.Application.Features.CQRS.Commands.ContactCommands;
 using CarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarBook.Application.Features.CQRS.Queries.ContactQueries;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers;
 
 namespace CarBook.WebApi.Controllers
 {

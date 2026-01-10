@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace UdemyCarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
+namespace CarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
     public class UpdatePricingCommandHandler : IRequestHandler<UpdateSocialMediaCommand>
     {
